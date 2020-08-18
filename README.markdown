@@ -16,6 +16,13 @@ $ bundle install
 
 ## Usage
 
+In your `.rubocop.yml` file, add these lines near the top:
+
+```yaml
+inherit_gem:
+  ut_rubocop:
+    - default.yml
+```
 
 ## License
 
