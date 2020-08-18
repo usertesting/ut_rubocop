@@ -1,0 +1,409 @@
+require:
+  - rubocop-rspec
+  - rubocop-performance
+
+AllCops:
+  DisabledByDefault: true
+  DisplayCopNames:   true
+  DisplayStyleGuide: true
+  Exclude:
+    - 'app/assets/**/*'
+    - '**/node_modules/**/*'
+    - 'yarn*'
+    - 'loader*'
+    - 'webpack*'
+    - 'gems/**/*'
+    - 'vendor/**/*'
+
+# ------------------------------------ Bundler -------------------------------------------
+Bundler/DuplicatedGem:
+  Enabled: true
+# ------------------------------------ /Bundler ------------------------------------------
+
+# ------------------------------------ Rspec/FactoryBot ----------------------------------
+FactoryBot/AttributeDefinedStatically:
+  Description: 'Check for deprecated factory attribute assignments.'
+  Enabled: true
+# ------------------------------------ /Rspec/FactoryBot ---------------------------------
+
+# ------------------------------------ Lints ---------------------------------------------
+Layout/BlockAlignment:
+  Enabled: true
+
+Lint/CircularArgumentReference:
+  Enabled: true
+
+Lint/Debugger:
+  Description: 'Check for `debugger` or `binding.pry` statements left in.'
+  Enabled: true
+  Exclude:
+    - bin/scripts/datacheck.rb
+    - spec/support/capybara.rb # Optional debugging tool not hit in regular codepaths
+
+Lint/DeprecatedClassMethods:
+  Description: 'Check for deprecated class method calls.'
+  Enabled: true
+
+Lint/DuplicateHashKey:
+  Description: 'Check for duplicate keys in hash literals.'
+  Enabled: true
+
+Lint/DuplicateMethods:
+  Description: 'Check for duplicate method definitions.'
+  Enabled: true
+
+Lint/EachWithObjectArgument:
+  Description: 'Check for immutable argument given to each_with_object.'
+  Enabled: true
+
+Lint/ElseLayout:
+  Description: 'Check for odd code arrangement in an else block.'
+  Enabled: true
+
+Lint/EmptyEnsure:
+  Description: 'Checks for empty ensure block.'
+  Enabled: true
+
+Lint/EmptyInterpolation:
+  Description: 'Checks for empty string interpolation.'
+  Enabled: true
+
+Style/EndBlock:
+  Description: 'END blocks should not be placed inside method definitions.'
+  Enabled: true
+
+Lint/EnsureReturn:
+  Description: 'Do not use return in an ensure block.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-return-ensure'
+  Enabled: true
+
+Lint/FlipFlop:
+  Enabled: true
+
+Lint/FloatOutOfRange:
+  Description: >-
+                 Catches floating-point literals too large or small for Ruby to
+                 represent.
+  Enabled: true
+
+Lint/FormatParameterMismatch:
+  Description: 'The number of parameters to format/sprint must match the fields.'
+  Enabled: true
+
+Lint/ImplicitStringConcatenation:
+  Description: Checks for adjacent string literals on the same line, which could better be represented as a single string literal.
+  Enabled: true
+
+Lint/InheritException:
+  Description: 'Avoid inheriting from the `Exception` class.'
+  Enabled: true
+
+Lint/LiteralInInterpolation:
+  Description: 'Checks for literals used in interpolation.'
+  Enabled: true
+
+Lint/Loop:
+  Enabled: true
+
+Lint/NestedMethodDefinition:
+  Description: 'Do not use nested method definitions.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-nested-methods'
+  Enabled: true
+
+Lint/NextWithoutAccumulator:
+  Description: Do not omit the accumulator when calling `next` in a `reduce`/`inject` block.
+  Enabled: true
+
+Lint/PercentStringArray:
+  Description: "Checks for unwanted commas and quotes in %w/%W literals."
+  Enabled: true
+
+Lint/PercentSymbolArray:
+  Description: "Checks for unwanted commas and colons in %i/%I literals."
+  Enabled: true
+
+Lint/RandOne:
+  Description: Checks for `rand(1)` calls. Such calls always return `0` and most likely a mistake.
+  Enabled: true
+
+Lint/RescueException:
+  Description: 'Avoid rescuing the Exception class.'
+  StyleGuide: 'https://github.com/github/rubocop-github/blob/master/STYLEGUIDE.md#exceptions'
+  Enabled: true
+
+Lint/ShadowedException:
+  Description:  Avoid rescuing a higher level exception before a lower level exception.
+  Enabled: true
+
+Lint/RedundantStringCoercion:
+  Enabled: true
+
+Lint/UnderscorePrefixedVariableName:
+  Enabled: true
+
+Lint/RedundantSplatExpansion:
+  Enabled: true
+
+Layout/IndentationConsistency:
+  Description: Checks for inconsistent indentation.
+  Enabled: true
+  StyleGuide: 'https://rubystyle.guide#spaces-indentation'
+  EnforcedStyle: indented_internal_methods
+
+Lint/UnreachableCode:
+  Description: 'Unreachable code.'
+  Enabled: true
+  Exclude:
+    - spec/lib/ut/cache_backed_mutex_spec.rb # Not truly unreachable
+
+Lint/UnusedMethodArgument:
+  Description: 'Checks for unused method arguments.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#underscore-unused-vars'
+  Enabled: true
+  Exclude:
+    - app/smart/**/*.rb      # Smart does this by design w/ example resources
+    - app/decorators/**/*.rb # to_json(*args) shouldn't trigger this
+
+Lint/UselessComparison:
+  Description: 'Checks for comparison of something with itself.'
+  Enabled: true
+
+Lint/UselessElseWithoutRescue:
+  Description: 'Checks for useless `else` in `begin..end` without `rescue`.'
+  Enabled: true
+
+Lint/UselessSetterCall:
+  Description: 'Checks for useless setter call to a local variable.'
+  Enabled: true
+
+Lint/Void:
+  Enabled: true
+
+# ------------------------------------ /Lints -------------------------------------------
+
+# ------------------------------------ Rails --------------------------------------------
+Rails/Exit:
+  Description: >-
+                  Favor `fail`, `break`, `return`, etc. over `exit` in
+                  application or library code outside of Rake files to avoid
+                  exits during unit testing or running in production.
+  Enabled: true
+
+Rails/Output:
+  Description: 'Checks for calls to puts, print, etc.'
+  Enabled: true
+  Exclude:
+    - db/migrate/*.rb
+    - lib/perform_deployment.rb
+    - lib/asset_manifest.rb
+    - lib/chores/log.rb
+    - lib/generators/chore/chore_generator.rb
+
+Rails/PluralizationGrammar:
+  Description: 'Checks for incorrect grammar when using methods like `3.day.ago`.'
+  Enabled: true
+
+Rails/ScopeArgs:
+  Description: 'Checks the arguments of ActiveRecord scopes.'
+  Enabled: true
+
+Rails/UniqBeforePluck:
+  Description: 'Prefer the use of uniq or distinct before pluck.'
+  Enabled: true
+
+Rails/ActiveRecordAliases:
+  Description: 'Checks that ActiveRecord aliases are not used. The direct method names are more clear and easier to read.'
+  Enabled: true
+
+# ------------------------------------ /Rails --------------------------------------------
+
+
+# ------------------------------------ Style --------------------------------------------
+Style/ArrayJoin:
+  Enabled: true
+
+Naming/AsciiIdentifiers:
+  Enabled: true
+
+Style/BeginBlock:
+  Enabled: true
+
+Style/BlockComments:
+  Enabled: true
+
+Layout/BlockEndNewline:
+  Enabled: true
+
+Style/CaseEquality:
+  Enabled: true
+
+Style/CharacterLiteral:
+  Enabled: true
+
+Naming/ClassAndModuleCamelCase:
+  Enabled: true
+
+Style/ClassMethods:
+  Enabled: true
+
+Style/DefWithParentheses:
+  Enabled: true
+
+Layout/EndOfLine:
+  Enabled: true
+
+Naming/FileName:
+  Enabled: true
+  ExpectMatchingDefinition: false
+  IgnoreExecutableScripts: true
+
+Style/For:
+  Enabled: true
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  AutoCorrect: false
+
+Layout/InitialIndentation:
+  Enabled: true
+
+Style/LambdaCall:
+  Enabled: true
+
+Style/MethodCallWithoutArgsParentheses:
+  Enabled: true
+
+Style/MethodDefParentheses:
+  Enabled: true
+
+Naming/MethodName:
+  Enabled: true
+  EnforcedStyle: snake_case
+  Exclude:
+    - spec/support/fresh_eyes_shared_code.rb #TesterA/TesterB makes sense
+
+Style/MultilineIfThen:
+  Enabled: true
+
+Style/NilComparison:
+  Enabled: true
+
+Style/Not:
+  Enabled: true
+
+Style/OneLineConditional:
+  Enabled: true
+
+Style/RedundantSortBy:
+  Enabled: true
+
+Style/Sample:
+  Enabled: true
+
+Layout/SpaceAfterColon:
+  Enabled: true
+
+Layout/SpaceAfterComma:
+  Enabled: true
+
+Layout/SpaceAfterMethodName:
+  Enabled: true
+
+Layout/SpaceAfterNot:
+  Enabled: true
+
+Layout/SpaceAfterSemicolon:
+  Enabled: true
+
+Layout/SpaceAroundBlockParameters:
+  Enabled: true
+
+Layout/SpaceAroundEqualsInParameterDefault:
+  Enabled: true
+
+Layout/SpaceInsideArrayPercentLiteral:
+  Enabled: true
+
+Layout/SpaceInsideArrayLiteralBrackets:
+  Enabled: true
+
+Layout/SpaceInsideReferenceBrackets:
+  Enabled: true
+
+Layout/SpaceInsideParens:
+  Enabled: true
+
+Layout/SpaceInsideRangeLiteral:
+  Enabled: true
+
+Style/StabbyLambdaParentheses:
+  Enabled: true
+
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: double_quotes
+
+Style/Strip:
+  Enabled: true
+
+Style/StructInheritance:
+  Description: 'Checks for inheritance from Struct.new.'
+  StyleGuide: '#no-extend-struct-new'
+  Enabled: true
+
+Layout/IndentationStyle:
+  Enabled: true
+
+Layout/TrailingEmptyLines:
+  Enabled: true
+  EnforcedStyle: final_newline
+
+Layout/TrailingWhitespace:
+  Enabled: true
+
+Layout/ConditionPosition:
+  Description: Checks for condition placed in a confusing position relative to the keyword.
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#same-line-condition'
+  Enabled: true
+
+Layout/DefEndAlignment:
+  Description: "Makes sure def/ends line up"
+  Enabled: true
+
+
+# ------------------------------------ /Style --------------------------------------------
+
+# ------------------------------------ Performance -----------------------------------------
+Performance/Count:
+  Enabled: true
+
+Performance/Detect:
+  Enabled: true
+
+Performance/DoubleStartEndWith:
+  Enabled: true
+
+Performance/EndWith:
+  Enabled: true
+
+Performance/FlatMap:
+  Enabled: true
+
+Performance/RedundantMerge:
+  Enabled: true
+  MaxKeyValuePairs: 1
+
+Performance/ReverseEach:
+  Enabled: true
+
+Performance/Size:
+  Enabled: true
+
+Performance/StartWith:
+  Enabled: true
+# ------------------------------------ /Performance -----------------------------------------
+
+# ------------------------------------ Security ---------------------------------------------
+Security/Eval:
+  Enabled: true
+# ------------------------------------ /Security --------------------------------------------
