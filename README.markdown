@@ -27,7 +27,7 @@ Library created by [UserTesting](https://usertesting.com)
 
 ## Contributing
 
-1. Fork it ( https://github.com/usertesting/ut-rubocop/fork )
+1. Fork it ( https://github.com/usertesting/ut_rubocop/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
