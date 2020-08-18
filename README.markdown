@@ -5,7 +5,7 @@
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "ut_rubocop"
+gem "ut-rubocop"
 ```
 
 And then execute:
@@ -20,7 +20,7 @@ In your `.rubocop.yml` file, add these lines near the top:
 
 ```yaml
 inherit_gem:
-  ut_rubocop:
+  ut-rubocop:
     - default.yml
 ```
 
