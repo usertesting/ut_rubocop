@@ -1,20 +1,19 @@
 # UT Rubocop
 
+This is a basic extraction of common UserTesting ruby styles.
+For rails focused styles, see [ut_rubocop_rails](https://github.com/usertesting/ut_rubocop_rails)
+
 ## Installation
 
-Add this line to your application's Gemfile:
+Add the gem to your `Gemfile` in the dev/test group:
+
+You don't need to add `rubocop` itself, this takes care of that.
 
 ```ruby
-gem "ut-rubocop"
+group :test, :development do
+  ...
+  gem "ut-rubocop", require: false
 ```
-
-And then execute:
-
-```ruby
-$ bundle install
-```
-
-## Usage
 
 In your `.rubocop.yml` file, add these lines near the top:
 
@@ -23,6 +22,10 @@ inherit_gem:
   ut-rubocop:
     - default.yml
 ```
+
+## Usage
+
+`bundle exec rubocop`
 
 ## License
 
