@@ -164,8 +164,8 @@ Lint/UnusedMethodArgument:
     - app/smart/**/*.rb      # Smart does this by design w/ example resources
     - app/decorators/**/*.rb # to_json(*args) shouldn't trigger this
 
-Lint/UselessComparison:
-  Description: 'Checks for comparison of something with itself.'
+Lint/BinaryOperatorWithIdenticalOperands:
+  Description: 'This cop checks for places where binary operator has identical operands.'
   Enabled: true
 
 Lint/UselessElseWithoutRescue:
