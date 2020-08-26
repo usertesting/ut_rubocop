@@ -166,7 +166,7 @@ Lint/UnusedMethodArgument:
 
 Lint/BinaryOperatorWithIdenticalOperands:
   Description: 'This cop checks for places where binary operator has identical operands.'
-  Enabled: true
+  Enabled: false
 
 Lint/UselessElseWithoutRescue:
   Description: 'Checks for useless `else` in `begin..end` without `rescue`.'
