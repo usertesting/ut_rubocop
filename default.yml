@@ -318,6 +318,9 @@ Layout/SpaceAfterSemicolon:
 Layout/SpaceAroundBlockParameters:
   Enabled: true
 
+Layout/SpaceBeforeBlockParameters:
+  Enabled: true
+
 Layout/SpaceAroundEqualsInParameterDefault:
   Enabled: true
 
