@@ -23,6 +23,17 @@ inherit_gem:
     - default.yml
 ```
 
+## Updating Gem
+
+- Increase version number in `lib/ut/style_ruby/version.rb` in your PR.
+- After merging to main, tag the current HEAD with the version number chosen: `git tag v0.0.x`
+- Build the gem: `gem build .gemspec`
+- Push gem to rubygems.org: `gem push ut-rubocop-0.0.x.gem`
+
+The gem is now updated on [rubygems.org](https://rubygems.org/gems/ut-rubocop).
+
+_Note that you will need to be added as a maintainer of the gem to be able to push it._
+
 ## Usage
 
 `bundle exec rubocop`
