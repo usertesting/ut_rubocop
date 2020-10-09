@@ -262,7 +262,6 @@ Style/For:
 
 Style/FrozenStringLiteralComment:
   Enabled: true
-  AutoCorrect: false
 
 Layout/InitialIndentation:
   Enabled: true
