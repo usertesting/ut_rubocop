@@ -181,43 +181,6 @@ Lint/Void:
 
 # ------------------------------------ /Lints -------------------------------------------
 
-# ------------------------------------ Rails --------------------------------------------
-Rails/Exit:
-  Description: >-
-                  Favor `fail`, `break`, `return`, etc. over `exit` in
-                  application or library code outside of Rake files to avoid
-                  exits during unit testing or running in production.
-  Enabled: true
-
-Rails/Output:
-  Description: 'Checks for calls to puts, print, etc.'
-  Enabled: true
-  Exclude:
-    - db/migrate/*.rb
-    - lib/perform_deployment.rb
-    - lib/asset_manifest.rb
-    - lib/chores/log.rb
-    - lib/generators/chore/chore_generator.rb
-
-Rails/PluralizationGrammar:
-  Description: 'Checks for incorrect grammar when using methods like `3.day.ago`.'
-  Enabled: true
-
-Rails/ScopeArgs:
-  Description: 'Checks the arguments of ActiveRecord scopes.'
-  Enabled: true
-
-Rails/UniqBeforePluck:
-  Description: 'Prefer the use of uniq or distinct before pluck.'
-  Enabled: true
-
-Rails/ActiveRecordAliases:
-  Description: 'Checks that ActiveRecord aliases are not used. The direct method names are more clear and easier to read.'
-  Enabled: true
-
-# ------------------------------------ /Rails --------------------------------------------
-
-
 # ------------------------------------ Style --------------------------------------------
 Style/ArrayJoin:
   Enabled: true
